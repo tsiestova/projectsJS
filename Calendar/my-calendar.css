@@ -1,0 +1,115 @@
+@import url(https://fonts.googleapis.com/css?family=Roboto+Slab);
+
+body {
+    font-family: 'Roboto Slab', serif;
+}
+
+main {
+    height: 100%;
+    background-size: contain;
+    text-align: center;
+}
+
+.calendar-container {
+    box-shadow: 0 0 1px 0 #cecece, 0 3px 8px #cecece;
+    padding: 20px;
+    box-sizing: border-box;
+    border-radius: 5px;
+    text-align: center;
+    max-width: 400px;
+    margin: 50px auto;
+}
+
+.weekday-item {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+    justify-content: center;
+    border-radius: 2px;
+    margin: 1px;
+}
+
+.weekday-item:hover {
+    color: #ffffff;
+    background: #dea291;
+}
+
+#weekday-list {
+    list-style: none;
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    grid-template-rows: repeat(6, 50px);
+    margin: auto;
+}
+
+.today {
+    background: #de5a4c;
+    color: #ffffff;
+}
+
+
+.month-block {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.weekend {
+    background: #93e0d6;
+    color: #ffffff;
+}
+
+#current-month {
+    margin: 30px;
+}
+
+button {
+    width: 50px;
+    height: 50px;
+    cursor: pointer;
+}
+
+.days-of-week-names-list {
+    display: grid;
+    grid-template-columns: repeat(7, 1fr);
+    list-style: none;
+    color: firebrick;
+}
+
+#flip-month-back {
+    position: relative;
+}
+
+#flip-month-back::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-left: 1px solid;
+    border-bottom: 1px solid;
+    position: absolute;
+    top: 0;
+    left: 6px;
+    right: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg);
+}
+
+#flip-month-next {
+    position: relative;
+}
+
+#flip-month-next::before {
+    content: "";
+    width: 15px;
+    height: 15px;
+    border-top: 1px solid;
+    border-right: 1px solid;
+    position: absolute;
+    top: 0;
+    right: 6px;
+    left: 0;
+    bottom: 0;
+    margin: auto;
+    transform: rotate(45deg);
+}
