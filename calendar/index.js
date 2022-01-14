@@ -58,14 +58,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
         </ul>`;
 
         daysOfWeekContainer.innerHTML = item;
-
     }
 
     const dateObj = {
-        dateToday: date.getDate(), // число
+        dateToday: date.getDate(),
         indexOfMonth: date.getMonth(),
         year: date.getFullYear(),
-        day: date.getDay(), // індекс дня тижня
+        day: date.getDay(),
     }
 
     const getNameOfMonthLocal = (arr, index) => {
@@ -79,10 +78,8 @@ document.addEventListener("DOMContentLoaded", function (event) {
     const createItemOfDays = (year, month) => {
 
         const dateOfFirstDayOfMonth = new Date(year, month, 1);
-        console.log(dateOfFirstDayOfMonth);
 
         let indexOfFirstDay = dateOfFirstDayOfMonth.getDay();
-
         month++;
         const countDaysInMonth = new Date(year, month, 0).getDate();
 
@@ -91,8 +88,13 @@ document.addEventListener("DOMContentLoaded", function (event) {
 
         for (let i = 0; i < (countDaysInMonth + indexOfFirstDay); i++) {
 
-            arr.push(`<li class="weekday-item ${weekend.includes(i) ? "weekend" : ""}">${i < indexOfFirstDay ? '' : i - indexOfFirstDay + 1}</li>`);
+            console.log(dateObj.indexOfMonth);
 
+            arr.push(`<li class="weekday-item ${weekend.includes(i) ? 'weekend' : ''} 
+                                                ${i === dateObj.dateToday ? 'today' : ''}">
+                                                
+                            ${i < indexOfFirstDay ? '' : i - indexOfFirstDay + 1}
+                      </li>`);
         }
 
         return arr.join('');
