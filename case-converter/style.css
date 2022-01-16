@@ -18,6 +18,7 @@
     background-color: white;
     color: cornflowerblue;
     border: 2px solid cornflowerblue;
+    cursor: pointer;
 }
 
 .textarea-wrap {
