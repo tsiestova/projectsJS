@@ -42,12 +42,6 @@ main {
     margin: auto;
 }
 
-.today {
-    background: #de5a4c;
-    color: #ffffff;
-}
-
-
 .month-block {
     display: flex;
     justify-content: center;
@@ -56,6 +50,11 @@ main {
 
 .weekend {
     background: #93e0d6;
+    color: #ffffff;
+}
+
+.today {
+    background: #de5a4c;
     color: #ffffff;
 }
 

@@ -1,148 +1,151 @@
 document.addEventListener("DOMContentLoaded", function (event) {
 
-    const flipMonthBack = document.getElementById('flip-month-back');
-    const flipMonthNext = document.getElementById('flip-month-next');
-    const monthPage = document.getElementById('current-month');
-    const yearPage = document.getElementById('year');
-    const weekdayContainer = document.getElementById('weekday-container');
-    const daysOfWeekContainer = document.getElementById('days-of-week-names-container');
+    (function() {
 
-    // array of month in local
+        const flipMonthBack = document.getElementById('flip-month-back');
+        const flipMonthNext = document.getElementById('flip-month-next');
+        const monthPage = document.getElementById('current-month');
+        const yearPage = document.getElementById('year');
+        const weekdayContainer = document.getElementById('weekday-container');
+        const daysOfWeekContainer = document.getElementById('days-of-week-names-container');
 
-    const date = new Date();
+        // array of month in local
 
-    const getMonthsArr = (local, year) => {
-        const monthArr = [];
+        const date = new Date();
 
-        for(let i = 0; i <= 11; i++) {
-            const baseDate = new Date(year, i);
+        const getMonthsArr = (local, year) => {
+            const monthArr = [];
 
-            monthArr.push(baseDate.toLocaleDateString(local, { month: 'long' }));
+            for(let i = 0; i <= 11; i++) {
+                const baseDate = new Date(year, i);
+
+                monthArr.push(baseDate.toLocaleDateString(local, { month: 'long' }));
+            }
+
+            return monthArr;
         }
 
-        return monthArr;
-    }
+        // object of weeklist
 
-    // object of weeklist
+        const getWeekList = (local, year, month) => {
+            const weekList = {};
 
-    const getWeekList = (local, year, month) => {
-        const weekList = {};
+            for(let i = 0; i < 7; i ++) {
+                const baseDate = new Date(year, month, i);
 
-        for(let i = 0; i < 7; i ++) {
-            const baseDate = new Date(year, month, i);
+                weekList[baseDate.getDay()] = baseDate.toLocaleDateString(local, { weekday: 'short' });
+            }
 
-            weekList[baseDate.getDay()] = baseDate.toLocaleDateString(local, { weekday: 'short' });
+            return weekList;
         }
 
-        return weekList;
-    }
+        const monthsArr = getMonthsArr('en-US', date.getFullYear());
+        const weekList =  getWeekList('en-US', date.getFullYear(), date.getMonth());
 
-    const monthsArr = getMonthsArr('en-US', date.getFullYear());
-    const weekList =  getWeekList('en-US', date.getFullYear(), date.getMonth());
-
-    const createWeekItem = (el) => {
-        return `<li class="days-of-week-names-item">${el}</li>`
-    }
-
-    const createWeekList = (obj) => {
-        let item = '';
-        for(let week in obj) {
-            item += createWeekItem(obj[week]);
+        const createWeekItem = (el) => {
+            return `<li class="days-of-week-names-item">${el}</li>`
         }
-        return item;
-    }
 
-    const renderWeekList = () => {
-        const item = `<ul class="days-of-week-names-list">
+        const createWeekList = (obj) => {
+            let item = '';
+            for(let week in obj) {
+                item += createWeekItem(obj[week]);
+            }
+            return item;
+        }
+
+        const renderWeekList = () => {
+            const item = `<ul class="days-of-week-names-list">
            ${createWeekList(weekList)}
         </ul>`;
 
-        daysOfWeekContainer.innerHTML = item;
-    }
+            daysOfWeekContainer.innerHTML = item;
+        }
 
-    const dateObj = {
-        dateToday: date.getDate(),
-        indexOfMonth: date.getMonth(),
-        year: date.getFullYear(),
-        day: date.getDay(),
-    }
+        const dateObj = {
+            dateToday: date.getDate(),
+            indexOfMonth: date.getMonth(),
+            year: date.getFullYear(),
+            day: date.getDay(),
+        }
 
-    const getNameOfMonthLocal = (arr, index) => {
-        return arr[index];
-    }
+        const getNameOfMonthLocal = (arr, index) => {
+            return arr[index];
+        }
 
-    const renderCurrentValue = (el, value) => {
-        el.innerHTML = value;
-    }
+        const renderCurrentValue = (el, value) => {
+            el.innerHTML = value;
+        }
 
-    const createItemOfDays = (year, month) => {
+        const createItemOfDays = (year, month) => {
 
-        const dateOfFirstDayOfMonth = new Date(year, month, 1);
+            const dateOfFirstDayOfMonth = new Date(year, month, 1);
 
-        let indexOfFirstDay = dateOfFirstDayOfMonth.getDay();
-        month++;
-        const countDaysInMonth = new Date(year, month, 0).getDate();
+            let indexOfFirstDay = dateOfFirstDayOfMonth.getDay();
+            month++;
+            const countDaysInMonth = new Date(year, month, 0).getDate();
 
-        const arr = [];
-        let weekend = [6, 7, 13, 14,  20, 21, 27, 28, 34, 35];
+            const arr = [];
+            let weekend = [6, 7, 13, 14,  20, 21, 27, 28, 34, 35];
 
-        for (let i = 0; i < (countDaysInMonth + indexOfFirstDay); i++) {
+            for (let i = 0; i < (countDaysInMonth + indexOfFirstDay); i++) {
 
-            console.log(dateObj.indexOfMonth);
+                const condition = dateObj.indexOfMonth === new Date().getMonth() &&
+                    i === dateObj.dateToday + indexOfFirstDay - 1 &&
+                    dateObj.year === new Date().getFullYear();
 
-            arr.push(`<li class="weekday-item ${weekend.includes(i) ? 'weekend' : ''} 
-                                                ${i === dateObj.dateToday ? 'today' : ''}">
+                arr.push(`<li class="weekday-item ${weekend.includes(i) ? 'weekend' : ''} 
+                                                ${condition ? 'today' : ''}">
                                                 
                             ${i < indexOfFirstDay ? '' : i - indexOfFirstDay + 1}
                       </li>`);
+            }
+
+            return arr.join('');
         }
 
-        return arr.join('');
-    }
-
-    const createListOfDays = (year, month) => {
-        return `<ul id="weekday-list">${createItemOfDays(year, month)}</ul>`;
-    }
-
-    const renderListOfDays = (year, month) => {
-        weekdayContainer.innerHTML = createListOfDays(year, month);
-    }
-
-    // ************************************************************************************************   основна ф-ція
-
-    const renderCalendar = () => {
-        renderCurrentValue(monthPage, getNameOfMonthLocal(monthsArr, dateObj.indexOfMonth));
-        renderCurrentValue(yearPage, dateObj.year);
-        renderWeekList();
-        renderListOfDays(dateObj.year, dateObj.indexOfMonth);
-    }
-
-    renderCalendar();
-
-    // ************************************************************************************************   основна ф-ція
-
-    const switchCalendarForward = () => {
-        if (dateObj.indexOfMonth === 11) {
-            dateObj.year += 1
-            dateObj.indexOfMonth = 0;
-
-        } else {
-            dateObj.indexOfMonth++;
+        const createListOfDays = (year, month) => {
+            return `<ul id="weekday-list">${createItemOfDays(year, month)}</ul>`;
         }
 
-       return dateObj;
-    }
-
-    const switchCalendarBack = () => {
-        if (dateObj.indexOfMonth === 0) {
-            dateObj.indexOfMonth = 11;
-            dateObj.year -= 1
-        } else {
-            dateObj.indexOfMonth--;
+        const renderListOfDays = (year, month) => {
+            weekdayContainer.innerHTML = createListOfDays(year, month);
         }
 
-        return dateObj;
-    }
+        // ************************************************************************************************
+        const renderCalendar = () => {
+            renderCurrentValue(monthPage, getNameOfMonthLocal(monthsArr, dateObj.indexOfMonth));
+            renderCurrentValue(yearPage, dateObj.year);
+            renderWeekList();
+            renderListOfDays(dateObj.year, dateObj.indexOfMonth);
+        }
+
+        renderCalendar();
+
+        // ************************************************************************************************
+
+        const switchCalendarForward = () => {
+            if (dateObj.indexOfMonth === 11) {
+                dateObj.year += 1
+                dateObj.indexOfMonth = 0;
+
+            } else {
+                dateObj.indexOfMonth++;
+            }
+
+            return dateObj;
+        }
+
+        const switchCalendarBack = () => {
+            if (dateObj.indexOfMonth === 0) {
+                dateObj.indexOfMonth = 11;
+                dateObj.year -= 1
+            } else {
+                dateObj.indexOfMonth--;
+            }
+
+            return dateObj;
+        }
 
         flipMonthNext.addEventListener('click', () => {
             switchCalendarForward();
@@ -158,6 +161,7 @@ document.addEventListener("DOMContentLoaded", function (event) {
             renderCurrentValue(yearPage, dateObj.year);
             renderListOfDays(dateObj.year, dateObj.indexOfMonth)
         })
+    }());
 
 });
 
