@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Open Space</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <script src="index.js"></script>
+</head>
+<body>
+<ol>
+    <li class="product">Мои желания</li>
+</ol>
+    <div class="space">
+        <div class="planet-area">
+            <figure id="figure-mars">
+                <img src="img/mars.png" alt="planet mars" class="planet">
+            </figure>
+            <figure id="figure-rocket">
+                <img src="img/rocket.png" alt="rocket" class="rocket">
+            </figure>
+        </div>
+        <div class="control-panel">
+            <div class="control-panel__inner">
+                <div class="control-panel__password-wrap">
+                    <label>
+                        <input id="password" type="password" placeholder="Enter any number to unlock...">
+                    </label>
+                    <label>
+                        <input class="submit-btn" type="button" value="ok">
+                    </label>
+                </div>
+
+                <div class="check-buttons">
+                    <div>
+                        <i class="fas fa-star"></i>
+                        <div class="control-panel__text">speed</div>
+                    </div>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                    <label><input type="checkbox" class="input-checkbox" disabled></label>
+                </div>
+
+                <div class="levers">
+                    <label for="input-range" class="control-panel__text">trajectory</label>
+                    <input id="input-range" type="range" disabled class="input-range"
+                           min="-180" max="180" value="0" step="0.01">
+                </div>
+                <input type="button" disabled class="launch-btn" value="Launch">
+            </div>
+        </div>
+    </div>
+</body>
+</html>
