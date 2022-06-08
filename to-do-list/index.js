@@ -218,6 +218,6 @@ document.addEventListener("DOMContentLoaded", () => {
             task.querySelector(".task").classList.toggle("decor-text");
         }
 
-        renderListFromLocal();
+        renderListFromLocal(); 
     }())
 })

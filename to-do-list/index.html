@@ -1,31 +1,58 @@
-<!DOCTYPE html>
-<html>
+<!doctype html>
+<html lang="en">
 <head>
-    <meta charset="utf-8">
-    <title>Virtual Piano</title>
+    <meta charset="UTF-8">
+    <title>To-Do List</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="style.css">
+    <meta charset="UTF-8">
+    <link href="https://use.fontawesome.com/releases/v5.0.13/css/all.css" rel="stylesheet">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link href="https://fonts.googleapis.com/css2?family=Indie+Flower&display=swap" rel="stylesheet">
 </head>
 <body>
-<div id="container" class="container">
-    <div class="keys-wrap white-keys">
-        <kbd class="piano-key">A</kbd>
-        <kbd class="piano-key">S</kbd>
-        <kbd class="piano-key">D</kbd>
-        <kbd class="piano-key">F</kbd>
-        <kbd class="piano-key">G</kbd>
-        <kbd class="piano-key">H</kbd>
-        <kbd class="piano-key">J</kbd>
-    </div>
+<div class="layout">
+    <h1>To-Do List</h1>
+    <label>
+        <input type="text" autofocus placeholder="Add a to-do ..." id="input-task">
+    </label>
+    <button id="add-task-button">Add task</button>
+    <ul id="task-list">
+        <li class="task-item">
+            <label class="check-task_label">
+                <input type="checkbox" class="input-check-task">
+                <i class="fas fa-check"></i>
+                <span class="task">Email David</span>
+            </label>
+            <button class="delete-btn">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+        </li>
 
-    <div class="keys-wrap black-keys">
-        <kbd class="piano-key">W</kbd>
-        <kbd class="piano-key">E</kbd>
-        <kbd class="piano-key" style="visibility: hidden"></kbd>
-        <kbd class="piano-key">T</kbd>
-        <kbd class="piano-key">Y</kbd>
-        <kbd class="piano-key">U</kbd>
-    </div>
+        <li class="task-item">
+            <label class="check-task_label">
+                <input type="checkbox" class="input-check-task">
+                <i class="fas fa-check"></i>
+                <span class="task">Create an ideal users personal guide</span>
+            </label>
+            <button class="delete-btn">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+        </li>
+
+        <li class="task-item">
+            <label class="check-task_label">
+                <input type="checkbox" class="input-check-task">
+                <i class="fas fa-check"></i>
+                <span class="task">Set up A/B test</span>
+            </label>
+            <button class="delete-btn">
+                <i class="fas fa-plus-circle"></i>
+            </button>
+        </li>
+    </ul>
 </div>
+
 <script src="index.js"></script>
 </body>
 </html>

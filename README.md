@@ -18,4 +18,4 @@
 - https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/to-do-list/index.html
 
 -- Virtual piano
-- https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/src/virtual-piano/index.html
+- https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/virtual-piano/index.html
