@@ -1,6 +1,6 @@
 
 -- Bootstrap
-- https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/bootstrap/bootstrap.html
+- https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/bootstrap/index.html
 
 -- Calendar
 - https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/develop/calendar/index.html
