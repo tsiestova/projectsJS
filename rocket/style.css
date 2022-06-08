@@ -61,14 +61,6 @@ body {
     border-radius: 5px;
 }
 
-#password:focus {
-
-}
-
-#password:focus {
-    color: #bfbebe;
-}
-
 #password::-webkit-input-placeholder {
      color: #bfbebe;
  }

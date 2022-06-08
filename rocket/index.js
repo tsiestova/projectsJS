@@ -12,8 +12,6 @@ document.addEventListener("DOMContentLoaded", (event)  => {
         const rocket = document.querySelector(".rocket");
         let chosenTrajectory;
 
-        inputPassword.focus();
-
         const definitionOfTTrajectory = () => {
             inputRange.addEventListener("change", () => {
                 chosenTrajectory = `rotate(${inputRange.value}deg)`;
