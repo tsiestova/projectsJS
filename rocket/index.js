@@ -11,7 +11,8 @@ document.addEventListener("DOMContentLoaded", (event)  => {
         const inputsCheckBox = document.querySelectorAll(".input-checkbox");
         const rocket = document.querySelector(".rocket");
         let chosenTrajectory;
-    // inputPassword.focus();
+
+        inputPassword.focus();
 
         const definitionOfTTrajectory = () => {
             inputRange.addEventListener("change", () => {
