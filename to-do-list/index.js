@@ -72,6 +72,7 @@ document.addEventListener("DOMContentLoaded", () => {
                 addElementToList(task);
 
                 addToLocalStorage(task.getAttribute('data-value'), inputTask.value);
+                console.log(getFromLocalStorage());
 
                 addRemoveEvent(task.querySelector('.delete-btn'));
                 addCheckEvent(task.querySelector('.input-check-task'));
