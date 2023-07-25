@@ -17,4 +17,3 @@
 -- Virtual piano
 - https://htmlpreview.github.io/?https://github.com/tsiestova/projectsJS/blob/master/virtual-piano/index.html
 
-
